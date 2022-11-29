@@ -1,0 +1,280 @@
+\documentclass{beamer}
+
+\usepackage{algorithm,algorithmic}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{color,xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{subfigure}
+
+% For citations
+% \usepackage{mlapa}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+
+\usepackage[english]{babel}
+\usefonttheme{professionalfonts}
+\mode<presentation>
+{
+    % more theme, see http://hartwork.org/beamer-theme-matrix/
+    \usetheme{CambridgeUS}
+    \usecolortheme{orchid}
+
+    \setbeamercovered{transparent}
+}
+
+
+% use \bm as bolded fonts
+\input{../math-def/notations-bold-bm.tex}
+
+% use \mathbf as bolded fonts
+% \input{../math-def/notations-bold-bf.tex}
+
+\setbeamertemplate{bibliography item}[text]
+
+\begin{document}
+%\begin{frame}
+    \title[KKT, prox, projection]{The Fastest $\ell_{\infty,1}$ Prox in the West}
+    \author[Apple Zhang]{B\'ejar, Benjam\'in and Dokmani\'c, Ivan and Vidal, Ren\'e\\~\\\small Speaker: Apple Zhang} % 显示作者
+    \institute[SZU]{Shenzhen University} % 设置学院机构
+    \date{\today}  % 显示日期
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section[Table of Contents]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame {
+    \frametitle{\secname}
+    \tableofcontents
+}
+
+\AtBeginSection[] {
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+% =========================================================================
+\section{Our Problem}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Sparse regression with $L_{\infty,1}$ constraints}
+    Consider the following optimization model \cite{L1infprox}:
+    \begin{align}
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+    \end{align}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Recall $L_{p,q}$-norm}
+    Define $L_{p,q}$-norm
+    \begin{equation}
+        \|\W\|_{p,q}=\left(\sum_{i=1}^m\|\w^{(i)}\|_p^q\right)^{1/q}
+    \end{equation}
+    And we usually use $L_{2,1}$-norm:
+    \begin{equation}
+        \|\W\|_{2,1}=\sum_{i=1}^m\|\w^{(i)}\|_2
+    \end{equation}
+    In this paper, we will use $L_{\infty,1}$-norm and $L_{1,\infty}$-norm:
+    \begin{align}
+        &\|\W\|_{\infty,1}=\sum_{i=1}^m\|\w^{(i)}\|_\infty=\sum_{i=1}^m\max_{j=1,2,\cdots,c}|w_{ij}|,\\
+        &\|\W\|_{1,\infty}=\max_{i=1,2,\cdots,m}\|\w^{(i)}\|_1.
+    \end{align}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+% =========================================================================
+\section{Preliminary}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{KKT conditions for convex problems}
+    For the following convex problem, where $f_i(\x)$ are convex functions.
+    \begin{align}
+        \min_{\x}f_0(\x),\quad\st f_i(\x)\leq 0~(i=1,2,\cdots,m),\quad\A\x=\bbf.
+    \end{align}
+    We can write Lagrange function:
+    \begin{equation*}
+        L(\x,\balpha,\bbeta)=f_0(\x)+\sum_{i=1}^m\alpha_if_i(\x)+\bbeta^\T(\bbf-\A\x).
+    \end{equation*}
+    And its KKT conditions are
+    \begin{align}
+        &\x^*=\arg\min_{\x}L(\x,\balpha^*,\bbeta^*),\\
+        &f_i(\x^*)\leq 0,\quad \A\x^*=\bbf,\quad\alpha_i^*\geq 0,\quad\alpha_i^*f_i(\x^*)=0.
+    \end{align}
+    Note that if $f_i(\x),~i=0,1,\cdots,m$ are differentiable, then we have
+    \begin{equation}
+        \nabla_{\x} L=\nabla_{\x} f_0(\x)+\sum_{i=1}^m\alpha_i\nabla_{\x} f_i(\x) -\A^\T\bbeta=\bm0.
+    \end{equation}
+    \vspace{10pt}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Proximal operator}
+    For a convex function $f(\cdot)$, define its proximal operator as
+    \begin{equation*}
+        \prox_f(\x)=\arg\min_{\z}f(\z)+\frac12\|\z-\x\|_2^2,
+    \end{equation*}
+    which means minimize $f(x)$ and make the solution is close to $\x$.
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Projection: a special case of proximal operator}
+    For non-empty convex set $\Cc$, define
+    \begin{equation}
+        \pi_{\Cc}(\x)=\arg\min_{\z\in\Cc}\frac12\|\z-\x\|_2^2.
+    \end{equation}
+    Projection is a special proximal operator since
+    \begin{equation}
+        \pi_{\Cc}(\x)=\prox_{\Ib(\cdot\in\Cc)}(\x)=\arg\min_{\z}\Ib(\z\in\Cc)+\frac12\|\z-\x\|_2^2.
+    \end{equation}
+    where $\Ib(\cdot\in\Cc)$ is indicator function:
+    \begin{equation}
+        \Ib(\z\in\Cc)=\begin{cases}
+            0,      &\z\in\Cc,\\
+            +\infty,&\mathrm{otherwise}.
+        \end{cases}
+    \end{equation}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Example: projection onto of $L_1$-ball}
+    Consider $L_1$-ball projection:
+    \begin{equation}
+        \pi_{\|\cdot\|_1\leq\lambda}(\x)=\arg\min_{\z}\frac12\|\z-\x\|_2^2,\quad\st \|\z\|_1\leq\lambda.
+    \end{equation}
+    Lagrange:
+    \begin{align}
+        L(\z,\alpha)
+        &=\frac12\|\z-\x\|_2^2+\alpha(\|\z\|_1-\lambda)\\
+        &={\color{red}\left[\frac12\|\z-\x\|_2^2+\alpha\|\z\|_1\right]}-\alpha\lambda.
+    \end{align}
+    Utilize \textbf{KKT conditions},
+    \begin{gather}
+        \z=\arg\min_{\z}L(\z,\alpha)=\prox_{\alpha\|\cdot\|_1}(\x),\\
+        \alpha\geq 0,\quad\alpha(\|\z\|_1-\lambda)=0.
+    \end{gather}
+    \vspace{15pt}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Example: projection onto of $L_1$-ball}
+    \begin{algorithm}[H]
+        \caption{$O(n\log n)$ Algorithm for $\pi_{\|\cdot\|_1\leq\lambda}$}
+        \begin{algorithmic}[1]
+            \REQUIRE $\x\in\Rb^n,\lambda>0$.
+            \ENSURE $\z=\pi_{\|\cdot\|_1\leq\lambda}(\x)$.
+            \IF {$\|\x\|_1\leq\lambda$}
+                \STATE $\z\leftarrow\x$.
+            \ELSE
+                \STATE $\ubf\leftarrow\mathrm{sort}(\x,\verb+`descend`+)$,
+                \STATE $\rho\leftarrow\max\{j=1,2,\cdots,n~|~ u_j-(\sum_{r=1}^ju_r-\lambda)/j>0\}$,
+                \STATE $\alpha\leftarrow(\sum_{r=1}^{\rho}u_i-\lambda)/\rho$,
+                \STATE $z_i\leftarrow\sign(x_i)[u_i-\alpha]_+,\quad\forall i=1,2,\cdots,n$.
+            \ENDIF
+        \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+% =========================================================================
+\section{Methodology}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Projected gradient descent}
+    \begin{align}
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+    \end{align}
+    Update 
+    \begin{align}
+        \V&\leftarrow\W-\eta\nabla_{\W}J(\W),\\
+        \W&\leftarrow\pi_{\|\cdot\|_{\infty,1}\leq\tau}(\V).
+    \end{align}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{Projection and proximal operator}
+    \begin{lemma}
+        For all $\tau>0$,
+        \begin{equation}
+            \prox_{\tau\|\cdot\|_{1,\infty}}(\V)+\pi_{\|\cdot\|_{\infty,1}\leq\tau}(\V)=\V
+        \end{equation}
+    \end{lemma}
+    Therefore, we should first compute $\prox_{\tau\|\cdot\|_{1,\infty}}(\V)$, i.e.,
+    \begin{equation}
+        \prox_{\tau\|\cdot\|_{1,\infty}}(\V)=\arg\min_{\W}\tau\|\W\|_{1,\infty}+\frac12\|\W-\V\|_2^2.
+    \end{equation}
+    \vspace{8pt}
+    Just for reminder, the definition of $L_{1,\infty}$ is
+    \begin{equation}
+        \|\W\|_{1,\infty}=\max_{i=1,2,\cdots,m}\|\w^{(i)}\|_1.
+    \end{equation}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% =========================================================================
+\section{Experiments}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}[fragile]
+    \frametitle{$L_{\infty,1}$ v.s. $L_{2,1}$}
+    \scriptsize
+    \begin{table}
+        \begin{tabular}{cccc}
+            \hline\hline
+            Datasets    & RFS ($L_{2,1}$) & $L_{\infty,1}$-regression & SVM\\
+            \hline
+            DNA         & 91.69$\pm$0.97  & 93.60$\pm$0.59 & 90.51$\pm$1.31\\
+            \hline
+            Binaryalpha & 55.27$\pm$2.56  & 57.53$\pm$1.37 & 62.81$\pm$1.81\\
+            \hline
+            USPS        & 88.10$\pm$0.51  & 88.26$\pm$0.38 & 92.10$\pm$0.59\\
+            \hline\hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{frame}
+    \centering
+    \Huge{Thank you!}
+
+    \vspace{20pt}
+    \scriptsize
+    \bibliographystyle{ieeetr}
+    \bibliography{ref}
+\end{frame}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\end{document}
+
+% https://web.stanford.edu/~jduchi/projects/DuchiShSiCh08/ProjectOntoL1Ball.m

@@ -1,0 +1,65 @@
+\documentclass{article}
+
+\usepackage[fontset=windows,UTF8]{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{bm}
+
+\geometry{a4paper,scale=0.75}
+
+\title{Demo}
+\author{Apple Zhang}
+\date{\today}
+
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{property}{性质}
+\newtheorem{lemma}{引理}
+
+% use \bm as bolded fonts
+% \input{../math-def/notations-bold-bm.tex}
+
+% use \mathbf as bolded fonts
+\input{../math-def/notations-bold-bf.tex}
+
+\begin{document}
+\maketitle
+
+% body of notes
+% ==========================================================================
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{上下界约束的二次规划问题}
+对于支持向量机
+\begin{align}
+    \min_{\w}\frac12\|\w\|_2^2+c\sum_{i=1}^n(1-y_i\w^T\x_i)^{p}_+\label{eq:svm}
+\end{align}
+其中 $(\cdot)_+=\max(0,\cdot)$.
+对于 $p=1,2$ ，上述问题均可以转化为以下形式的优化问题.
+\begin{align}
+    \tilde\balpha=\arg\min_{\balpha}f(\balpha)=\frac12\balpha^T\Q\balpha+\h^T\balpha,\quad 0\leq\alpha_i\leq c.\label{eq:boxqp}
+\end{align}
+其中 $f(\balpha)$ 为优化目标函数.
+则 \eqref{eq:svm} 的最优解为
+\begin{equation}
+    \w=\sum_{i=1}^ny_i\tilde\alpha_i\x_i.
+\end{equation}
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Bounded Quadratic Programming}
+其它正文...
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% ==========================================================================
+
+% reference
+\bibliographystyle{ieeetr}
+\bibliography{ref}
+
+
+\end{document}
