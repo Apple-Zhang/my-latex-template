@@ -74,7 +74,7 @@
     \frametitle{Sparse regression with $L_{\infty,1}$ constraints}
     Consider the following optimization model \cite{L1infprox}:
     \begin{align}
-        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\sto\|\W\|_{\infty,1}\leq\tau.
     \end{align}
 \end{frame}
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -107,7 +107,7 @@
     \frametitle{KKT conditions for convex problems}
     For the following convex problem, where $f_i(\x)$ are convex functions.
     \begin{align}
-        \min_{\x}f_0(\x),\quad\st f_i(\x)\leq 0~(i=1,2,\cdots,m),\quad\A\x=\bbf.
+        \min_{\x}f_0(\x),\quad\sto f_i(\x)\leq 0~(i=1,2,\cdots,m),\quad\A\x=\bbf.
     \end{align}
     We can write Lagrange function:
     \begin{equation*}
@@ -163,7 +163,7 @@
     \frametitle{Example: projection onto of $L_1$-ball}
     Consider $L_1$-ball projection:
     \begin{equation}
-        \pi_{\|\cdot\|_1\leq\lambda}(\x)=\arg\min_{\z}\frac12\|\z-\x\|_2^2,\quad\st \|\z\|_1\leq\lambda.
+        \pi_{\|\cdot\|_1\leq\lambda}(\x)=\arg\min_{\z}\frac12\|\z-\x\|_2^2,\quad\sto \|\z\|_1\leq\lambda.
     \end{equation}
     Lagrange:
     \begin{align}
@@ -209,7 +209,7 @@
 \begin{frame}[fragile]
     \frametitle{Projected gradient descent}
     \begin{align}
-        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\sto\|\W\|_{\infty,1}\leq\tau.
     \end{align}
     Update 
     \begin{align}

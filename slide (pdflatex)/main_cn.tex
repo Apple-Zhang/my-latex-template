@@ -75,7 +75,7 @@
     \frametitle{Sparse regression with $L_{\infty,1}$ constraints}
     求解以下的回归模型\cite{L1infprox}:
     \begin{align}
-        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\sto\|\W\|_{\infty,1}\leq\tau.
     \end{align}
 \end{frame}
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -108,7 +108,7 @@
     \frametitle{KKT conditions for convex problems}
     对于以下优化问题，其中 $f_i(\x),~i=0,1,\cdots,m$ 均为凸函数.
     \begin{align}
-        \min_{\x}f_0(\x),\quad\st f_i(\x)\leq 0~(i=1,2,\cdots,m),\quad\A\x=\bbf.
+        \min_{\x}f_0(\x),\quad\sto f_i(\x)\leq 0~(i=1,2,\cdots,m),\quad\A\x=\bbf.
     \end{align}
     拉格朗日函数
     \begin{equation*}
@@ -164,7 +164,7 @@
     \frametitle{Example: projection onto of $L_1$-ball}
     考虑 $L_1$ 球的投影问题:
     \begin{equation}
-        \pi_{\|\cdot\|_1\leq\lambda}(\x)=\arg\min_{\z}\frac12\|\z-\x\|_2^2,\quad\st \|\z\|_1\leq\lambda.
+        \pi_{\|\cdot\|_1\leq\lambda}(\x)=\arg\min_{\z}\frac12\|\z-\x\|_2^2,\quad\sto \|\z\|_1\leq\lambda.
     \end{equation}
     拉格朗日函数
     \begin{align}
@@ -225,7 +225,7 @@
 \begin{frame}[fragile]
     \frametitle{Projected gradient descent}
     \begin{align}
-        \min_{\W}\|\Y-\X\W\|_2^2,\quad\st\|\W\|_{\infty,1}\leq\tau.
+        \min_{\W}\|\Y-\X\W\|_2^2,\quad\sto\|\W\|_{\infty,1}\leq\tau.
     \end{align}
     迭代更新公式:
     \begin{align}
