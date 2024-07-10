@@ -1,0 +1,87 @@
+\documentclass{article}
+
+% general Arxiv template
+\usepackage{arxiv}
+
+
+
+% commonly-used packages
+\usepackage{graphicx} 
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{empheq}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{wrapfig}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+% math things
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\input{notations-bold-bm}
+
+\title{Title}
+\author{}
+\date{today}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+%
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%
+\setlength\doublerulesep{0.6pt}
+
+\usepackage{xspace}
+\newcommand{\myname}{Apple\xspace}
+\title{\myname: Title}
+\author{%
+  Who\thanks{Corresponding author} \\
+  Institution \\
+  Where \\
+  \texttt{Email} \\
+  \And
+  Who \\
+  Institution \\
+  Where \\
+  \texttt{Email} \\
+  \AND
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Abstract
+\end{abstract}
+
+\input{main/1.intro}
+\input{main/2.prel}
+\input{main/3.method-motivatin}
+\input{main/4.exp}
+\input{main/5.concl}
+
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\newpage
+\appendix
+\input{main/appendix}
+
+\end{document}
