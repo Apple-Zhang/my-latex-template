@@ -35,25 +35,25 @@ $\bfeta$     # The bold form of the Greek letter \eta is \bfeta, because it conf
 $\onef$      # Bold 1, commonly used to define an all-ones vector
 ```
 Effect:
-$$
-\bm{w}, \bm{W}, \bm{a}, \bm{\alpha}, \bm{\eta}, \bm{1}.
-$$
+```math
+\boldsymbol{w}, \boldsymbol{W}, \boldsymbol{a}, \boldsymbol{\alpha}, \boldsymbol{\eta}, \boldsymbol{1}.
+```
 
 ### Calligraphic Math
 Commonly used to define sets, written as `$\Xc$`, `$\Sc$`, etc., i.e., add a lowercase c after the letter. Effect:
-$$
+```math
 \mathcal{X}, \mathcal{S}
-$$
+```
 
 ### Blackboard Bold Math
 Commonly used to define number fields and expectations, written as `$\Rb$`, `$\Eb$`, etc., i.e., add a lowercase b after the letter. Effect:
-$$
+```math
 \mathbb{R}, \mathbb{E}
-$$
+```
 
 ### Special Symbols
-- Transpose: Written as `$\T$`. For example, the effect of `$\A^\T$` is: $\bm{A}^\top$.
+- Transpose: Written as `$\T$`. For example, the effect of `$\A^\T$` is: $\boldsymbol{A}^\top$.
 - Subject to: Written as `\sto`. For example, the effect of `$\sto a>0$` is: $\text{s.t. } a>0$.
-- Trace of a matrix: Written as `\tr`. For example, the effect of `$\tr(\A)$` is: $Tr(\bm{A})$.
-    Note: The definition of `\tr` is to support customizable trace symbol definitions, such as defining `\newcommand{\tr}{\mathsf{tr}}`, which results in a cooler looking $\mathsf{tr}(\bm{A})$.
+- Trace of a matrix: Written as `\tr`. For example, the effect of `$\tr(\A)$` is: $Tr(\boldsymbol{A})$.
+    Note: The definition of `\tr` is to support customizable trace symbol definitions, such as defining `\newcommand{\tr}{\mathsf{tr}}`, which results in a cooler looking $\mathsf{tr}(\boldsymbol{A})$.
 - Other similar symbols include `\diag`, `\sign`, `\prox`, etc. Refer to `notations.tex` for details.

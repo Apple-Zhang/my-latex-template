@@ -39,27 +39,27 @@ $\bfeta$     # 希腊字母 \eta 的粗体是 \bfeta，因为和 \beta 冲突了
 $\onef$      # 粗体的1，常用于定义全1向量
 ```
 效果：
-$$
-\bm{w}, \bm{W}, \bm{a}, \bm{\alpha}, \bm{\eta}, \bm{1}.
-$$
+```math
+\boldsymbol{w}, \boldsymbol{W}, \boldsymbol{a}, \boldsymbol{\alpha}, \boldsymbol{\eta}, \boldsymbol{1}.
+```
 
 ### 数学花体
 常用于定义集合，写法为 `$\Xc$`、`$\Sc$` 等，即字母后面加小写c。效果：
-$$
+```math
 \mathcal{X}, \mathcal{S}
-$$
+```
 
 
 ### 数学板书粗体
 常用于定义数域、期望，写法为 `$\Rb$`、`$\Eb$` 等，即字母后面加小写b。效果：
-$$
+```math
 \mathbb{R}, \mathbb{E}
-$$
+```
 
 
 ### 特殊符号
-- 转置: 写法为 `$\T$`。例如 `$\A^\T$` 的效果为： $\bm{A}^\top$.
+- 转置: 写法为 `$\T$`。例如 `$\A^\T$` 的效果为： $\boldsymbol{A}^\top$.
 - 约束：写法为 `\sto`。例如 `$\sto a>0$`，效果为：$\text{s.t. } a>0$.
-- 矩阵的迹：写法为 `\tr`。例如 `$\tr(\A)$` 的效果为： $Tr(\bm{A})$。
-注：定义 `\tr` 是为了支持可修改迹的符号定义，例如定义 `\newcommand{\tr}{\mathsf{tr}}`，效果就是看起来更炫酷的 $\mathsf{tr}(\bm{A})$.
+- 矩阵的迹：写法为 `\tr`。例如 `$\tr(\A)$` 的效果为： $Tr(\boldsymbol{A})$。
+注：定义 `\tr` 是为了支持可修改迹的符号定义，例如定义 `\newcommand{\tr}{\mathsf{tr}}`，效果就是看起来更炫酷的 $\mathsf{tr}(\boldsymbol{A})$.
 - 其它类似符号包括 `\diag`、`\sign`、`\prox` 等，参见 `notations.tex`。
