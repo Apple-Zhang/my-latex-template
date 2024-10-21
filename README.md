@@ -18,6 +18,9 @@ ProjectMainFolder/
 └── ref.bib
 ```
 Most of the paper templates in this repository adopt the above structure. When changing templates for paper submission, you only need to change a small part of the code in `main.tex`.
+When you are unsure which template to choose when writing a paper,
+consider using the `AnyPaper_template-ArXiv` template for writing manuscript.
+You can replace `main.tex` with the appropriate template once you know the journal/conference style.
 
 ## Mathematical Symbol System
 This repository provides `notations.tex`, which predefines a series of commonly used shortcut symbol systems. This way, you don't have to frequently write long codes like `$\mathbf{X}$`, `\mathbb{R}`, `\mathcal{X}` in your paper.
