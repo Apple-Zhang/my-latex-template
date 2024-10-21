@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb,amsthm}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{color}
+\usepackage{stfloats}
+\usepackage{graphicx}
+\usepackage[square,authoryear]{natbib}
+\usepackage{subfigure}
+
+\geometry{a4paper,scale=0.77}
+
+\title{Response for \$\{Paper Code\}: \$\{Paper Title\}}
+\author{Authors}
+\date{}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{property}{Property}
+\newtheorem{lemma}{Lemma}
+
+\renewcommand{\thetable}{R.\arabic{table}}
+
+\newcommand{\firstquestion}[2]{\noindent\textbf{Question #2: #1}}
+\newcommand{\question}[2]{\vspace{8pt}\noindent\textbf{Question #2: #1}}
+\newcommand{\ans}[1]{\emph{\color{red} #1}}
+\newcommand{\hili}[1]{\textcolor{blue}{#1}}
+
+% use \bm as bolded fonts
+% \input{../math-def/notations-bold-bm.tex}
+
+% use \mathbf as bolded fonts
+\input{notations.tex}
+
+\begin{document}
+\maketitle
+
+% body of notes
+% ==========================================================================
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section*{To The Associate Editor and The Reviewers}
+The authors are thankful for the comments and suggestions from the Associate Editor and reviewers.
+Overall, the AE and reviewers believe our paper is novel and interesting but could be improved.
+Reviewer 1 highly approved our work and pointed out that the convergence of our method can be further studied.
+Reviewer 2 thinks the motivation, technical contribution on efficiency, experiments, and conclusion could be strengthened.
+In the revised manuscript, we tackle all concerns proposed by the reviewers.
+The primary modifications are listed as follows:
+\begin{enumerate}
+    \item first point.
+    \item seciont point.
+    \item and so on...
+\end{enumerate}
+We would like to appreciate the reviewers' valuable suggestions to improve our work.
+Through the revision,
+we believe the quality of the manuscript is greatly enhanced.
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section*{To The Associate Editor}
+\firstquestion{This paper presented a method to do xxx.
+As noted by the reviewers, albeit it is interesting, its motivation, convergence, experiments as well as technical contributions should be strengthened.
+The authors are suggested to carefully revise the manuscript accordingly.}{0-1}
+
+\ans{Response:} We have addressed all problems proposed by the reviewers and the editor, as shown in the following responses.
+We believe that with the suggestions and help from the reviewers and associate editor,
+the quality of the manuscript has been improved significantly. 
+
+\section{To Reviewer 1}
+\subsection{Convergence Analysis}\label{sec:conv}
+\firstquestion{How are you?}{1-1}
+
+\ans{Response:} I am fine thank you, and you?
+
+
+\subsection{RDR}
+\firstquestion{What is RDR?}{1-2}
+
+\ans{Response:} Please see the paper \cite{lai2017RDR}.
+Note that in this template, the reference style is \verb+unsrtnat+ (not numbered and sorted), 
+which is to avoid confusion with the numbered referece in the original manuscript.
+
+\subsection{Others (Minor)}
+\firstquestion{In algorithm 1, change 'JD' to 'OD'.}{1-4}
+
+\ans{Response:} Thank you for your careful review.
+We have corrected the typo.
+In addition, we have checked and corrected the typos in the manuscript.
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\bibliographystyle{unsrtnat}
+\bibliography{ref}
+
+
+\end{document}
