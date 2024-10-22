@@ -65,3 +65,33 @@ $\onef$      # 粗体的1，常用于定义全1向量
 - 矩阵的迹：写法为 `\tr`。例如 `$\tr(\A)$` 的效果为： $Tr(\boldsymbol{A})$。
 注：定义 `\tr` 是为了支持可修改迹的符号定义，例如定义 `\newcommand{\tr}{\mathsf{tr}}`，效果就是看起来更炫酷的 $\mathsf{tr}(\boldsymbol{A})$.
 - 其它类似符号包括 `\diag`、`\sign`、`\prox` 等，参见 `notations.tex`。
+
+## 技巧与代码规范
+- **空行与换段**：另起自然段只需空出一个空行（不能是注释行）即可，不需要用 `\\` 或 `\par` 之类的语句。
+考虑如下两种LaTeX源码。
+```LaTeX
+How are you?
+
+I'm fine thank you and you?
+```
+为两段文本。而
+```LaTeX
+How are you?
+I'm fine thank you and you?
+```
+则是连起来的一段话。它和一行代码 `How are you? I'm fine thank you and you?` 功能相同。
+因此如果有一段话太长了，考虑把它分成好几行代码吧，可读性会更好。
+
+- **数学公式：** 推荐使用 `\begin{equation}...\end{equation}` 定义行间公式，而不是 `$$...$$` 或 `\(...\)`。
+另外，加一个星号如 `\begin{equation*}...\end{equation*}` 表示不对公式进行标号。
+
+- **统一数学符号：** 同一个东西只用一个数学符号表示，并且尽量使用统一的符号系统（推荐使用 `notations.tex`）
+
+- **简写技巧：** 例如现在你提出了一个方法，简写为 VNet，你可以在文档开始时进行如下定义：
+```LaTeX
+\usepackage{xspace}
+\newcommand{\myname}{VNet\xspace}
+```
+然后在需要引用自己的方法名称时写 `\myname`。
+这样的好处是万一日后需要修改方法名为 UVNet 之类的，可以把上面定义的地方改成 `\newcommand{\myname}{UVNet\xspace}` 即可，不用再在全文找一遍再改。
+- **表格工具：** 推荐[这个网页](https://www.tablesgenerator.com/)生成LaTeX表格。在 Excel 中把表格制作好后复制到这个网页上就好了。

@@ -60,3 +60,34 @@ Commonly used to define number fields and expectations, written as `$\Rb$`, `$\E
 - Trace of a matrix: Written as `\tr`. For example, the effect of `$\tr(\A)$` is: $Tr(\boldsymbol{A})$.
     Note: The definition of `\tr` is to support customizable trace symbol definitions, such as defining `\newcommand{\tr}{\mathsf{tr}}`, which results in a cooler looking $\mathsf{tr}(\boldsymbol{A})$.
 - Other similar symbols include `\diag`, `\sign`, `\prox`, etc. Refer to `notations.tex` for details.
+
+## Tips and Code Conventions
+- **Blank Lines and Paragraphs**: To start a new paragraph, simply leave a blank line (not a comment line). There is no need to use `\\` or `\par` commands.
+Consider the following two LaTeX source codes:
+```LaTeX
+How are you?
+
+I'm fine thank you and you?
+```
+These are two separate paragraphs. Whereas,
+```LaTeX
+How are you?
+I'm fine thank you and you?
+```
+is a single paragraph. It is the same as the single line `How are you? I'm fine thank you and you?`.
+Therefore, if a paragraph is too long, consider breaking it into several lines of code for better readability.
+
+- **Mathematical Formulas**: It is recommended to use `\begin{equation}...\end{equation}` for defining display equations, rather than `$$...$$` or `\(...\)`.
+Additionally, adding an asterisk like `\begin{equation*}...\end{equation*}` indicates that the equation is not numbered.
+
+- **Consistent Mathematical Symbols**: Use a single mathematical symbol to represent the same concept, and try to use a consistent symbol system (it is recommended to use `notations.tex`).
+
+- **Abbreviation Techniques**: For example, if you propose a method abbreviated as VNet, you can define it at the beginning of the document as follows:
+```LaTeX
+\usepackage{xspace}
+\newcommand{\myname}{VNet\xspace}
+```
+Then, when you need to refer to your method name, write `\myname`.
+The advantage of this is that if you need to change the method name to UVNet in the future, you can simply change the definition to `\newcommand{\myname}{UVNet\xspace}` without having to search and replace throughout the document.
+
+- **Table Tools**: It is recommended to use [this website](https://www.tablesgenerator.com/) to generate LaTeX tables. Create the table in Excel, then copy it to this website.
